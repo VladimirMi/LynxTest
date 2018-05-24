@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LynxTest</string>
     <string name="details">Подробнее</string>
+    <string name="prediction">Прогноз:</string>
 
     <string-array name="tabs">
         <item>football</item>

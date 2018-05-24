@@ -1,6 +1,7 @@
 package io.github.vladimirmi.lynxtest.news;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.github.vladimirmi.lynxtest.R;
+import io.github.vladimirmi.lynxtest.details.DetailsActivity;
 
 /**
  * Created by Vladimir Mikhalev 24.05.2018.
@@ -71,12 +73,12 @@ public class CategoryFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(category, CategoryViewModel.class);
         viewModel.init(category);
 
-        viewModel.getEvents().observe(this, events -> {
-            eventsAdapter.setData(events);
-        });
+        viewModel.getEvents().observe(this, eventsAdapter::setData);
     }
 
     private void showDetails(String article) {
-
+        Intent showDetails = new Intent(getContext(), DetailsActivity.class);
+        showDetails.putExtra(DetailsActivity.EXTRA_ARTICLE, article);
+        startActivity(showDetails);
     }
 }

@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.github.vladimirmi.lynxtest.data.models.ArticleDetail;
 import io.github.vladimirmi.lynxtest.data.models.Category;
 import io.github.vladimirmi.lynxtest.data.net.RestService;
 import retrofit2.Call;
@@ -42,6 +43,23 @@ public class Repository {
 
             @Override
             public void onFailure(@NonNull Call<Category> call, @NonNull Throwable t) {
+
+            }
+        });
+        return data;
+    }
+
+    public LiveData<ArticleDetail> getArticle(String article) {
+        final MutableLiveData<ArticleDetail> data = new MutableLiveData<>();
+
+        restService.getAricle(article).enqueue(new Callback<ArticleDetail>() {
+            @Override
+            public void onResponse(@NonNull Call<ArticleDetail> call, @NonNull Response<ArticleDetail> response) {
+                data.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ArticleDetail> call, @NonNull Throwable t) {
 
             }
         });
