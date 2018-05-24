@@ -7,17 +7,17 @@ import java.util.List;
  */
 public class Category {
 
-    private List<Events> events;
+    private List<Event> events;
 
-    public List<Events> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Events> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 
-    public static class Events {
+    public static class Event {
 
         private String title;
         private String coefficient;
