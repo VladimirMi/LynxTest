@@ -10,11 +10,12 @@
 
     <TextView
         android:id="@+id/teamsTv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +30,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teamsTv"
         tools:text="Завтра в 23:00 МСК"
@@ -41,6 +43,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeTv"
         tools:text="Испания. Примера"
@@ -53,22 +56,26 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tournamentTv"
         tools:text='Стадион "Монтиливи", Жирона'
         />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/articleList"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/predictionLabelTv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/prediction"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeTv"
+        app:layout_constraintTop_toBottomOf="@id/placeTv"
+        tools:visibility="visible"
         />
 
     <TextView
@@ -77,10 +84,21 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/articleList"
+        app:layout_constraintTop_toBottomOf="@+id/predictionLabelTv"
         tools:text="«Жирона» в родных стенах редко теряла очки в последнее время  – четыре победы и одна ничья в шести последних встречах, причем  и пропустили в пяти предыдущих домашних поединках каталонцы только дважды. «Леганес» слабо играет в гостях, к тому ни разу в истории не удалось обыграть «жиронцев» на их поле."
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/articleList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/predictionTv"
         />
 </android.support.constraint.ConstraintLayout>

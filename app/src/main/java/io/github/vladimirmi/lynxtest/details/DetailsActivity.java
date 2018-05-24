@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -23,9 +24,11 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.tournamentTv) TextView tournamentTv;
     @BindView(R.id.placeTv) TextView placeTv;
     @BindView(R.id.articleList) RecyclerView articleList;
+    @BindView(R.id.predictionLabelTv) TextView predictionLabelTv;
     @BindView(R.id.predictionTv) TextView predictionTv;
 
     private DetailViewModel viewModel;
+    private ArticlesAdapter articlesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,9 @@ public class DetailsActivity extends AppCompatActivity {
     private void setupArticles() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         articleList.setLayoutManager(layoutManager);
+
+        articlesAdapter = new ArticlesAdapter();
+        articleList.setAdapter(articlesAdapter);
     }
 
     private void setupView() {
@@ -64,6 +70,8 @@ public class DetailsActivity extends AppCompatActivity {
         viewModel.init(article);
 
         viewModel.getArticle().observe(this, articleDetail -> {
+            predictionLabelTv.setVisibility(View.VISIBLE);
+
             teamsTv.setText(String.format("%s - %s",
                     articleDetail.getTeam1().trim(),
                     articleDetail.getTeam2().trim()));
@@ -71,6 +79,8 @@ public class DetailsActivity extends AppCompatActivity {
             tournamentTv.setText(articleDetail.getTournament());
             placeTv.setText(articleDetail.getPlace());
             predictionTv.setText(articleDetail.getPrediction());
+
+            articlesAdapter.setData(articleDetail.getArticle());
         });
     }
 }

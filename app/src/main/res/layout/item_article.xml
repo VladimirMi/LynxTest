@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="4dp"
+    app:contentPadding="8dp"
+    app:cardBackgroundColor="@color/grey_300"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/headerTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="«Жирона»"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_marginBottom="8dp"
+            />
+
+        <TextView
+            android:id="@+id/textTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="«Жирона» в минувшем туре играла на выезде против «Севильи». Поединок был важен в плане шансов каталонского клуба вмешаться в распределение путевок в еврокубки. Как оказалось, пока еще «жиронцам» рановато на международную арену. Единственный точный удар «нервионцев» в конце первого тайма оказался победным.Поражение от «Севильи» прервало неплохую серию подопечных Пабло Мачина, на протяжении которой они сыграли на выезде вничью с мадридским «Атлетико» 1:1 и «Малагой» 0:0, а также одержали две домашние победы над «Лас-Пальмасом» 6:0 и «Атлетиком» Бильбао 2:0. В целом за шесть предыдущих домашних поединков «Жирона» уступила только «Алавесу» 2:3. В тоже время к выше указанным победам можно также добавить за этот период успех в матчах с мадридским «Реалом» 3:2 и «Хетафе» 1:0.В лазарете у каталонцев Хосе Аурелио Суарес, Пере Понс и Дуглас Луис."
+            />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
