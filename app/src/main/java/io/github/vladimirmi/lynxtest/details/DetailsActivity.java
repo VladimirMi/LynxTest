@@ -2,6 +2,7 @@ package io.github.vladimirmi.lynxtest.details;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,6 +64,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void setupArticles() {
+        articleList.setNestedScrollingEnabled(false);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         articleList.setLayoutManager(layoutManager);
 
