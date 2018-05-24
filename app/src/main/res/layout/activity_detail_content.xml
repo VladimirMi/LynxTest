@@ -85,6 +85,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/predictionLabelTv"
         tools:text="«Жирона» в родных стенах редко теряла очки в последнее время  – четыре победы и одна ничья в шести последних встречах, причем  и пропустили в пяти предыдущих домашних поединках каталонцы только дважды. «Леганес» слабо играет в гостях, к тому ни разу в истории не удалось обыграть «жиронцев» на их поле."

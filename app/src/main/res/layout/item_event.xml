@@ -4,11 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_margin="8dp"
     app:contentPadding="8dp"
     app:cardCornerRadius="4dp"
-    app:cardBackgroundColor="@color/grey_300"
     >
 
     <android.support.constraint.ConstraintLayout
@@ -77,6 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/details"
+            android:theme="@style/AccentButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/previewTv"
             />
