@@ -5,6 +5,8 @@ import android.arch.lifecycle.ViewModel;
 
 import java.util.List;
 
+import io.github.vladimirmi.lynxtest.ServiceLocator;
+import io.github.vladimirmi.lynxtest.data.Repository;
 import io.github.vladimirmi.lynxtest.data.models.Category;
 
 /**
@@ -13,12 +15,13 @@ import io.github.vladimirmi.lynxtest.data.models.Category;
 public class CategoryViewModel extends ViewModel {
 
     private String category;
+    private Repository repository = ServiceLocator.REPOSITORY;
 
     public void init(String category) {
         this.category = category;
     }
 
     public LiveData<List<Category.Event>> getEvents() {
-        return null;
+        return repository.getEvents(category);
     }
 }
