@@ -8,11 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.vladimirmi.lynxtest.R;
+import io.github.vladimirmi.lynxtest.data.models.ArticleDetail;
+import io.github.vladimirmi.lynxtest.data.models.Resource;
+import io.github.vladimirmi.lynxtest.data.models.Status;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -26,6 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.articleList) RecyclerView articleList;
     @BindView(R.id.predictionLabelTv) TextView predictionLabelTv;
     @BindView(R.id.predictionTv) TextView predictionTv;
+    @BindView(R.id.loadingPb) ProgressBar loadingPb;
 
     private DetailViewModel viewModel;
     private ArticlesAdapter articlesAdapter;
@@ -69,18 +75,37 @@ public class DetailsActivity extends AppCompatActivity {
         String article = getIntent().getStringExtra(EXTRA_ARTICLE);
         viewModel.init(article);
 
-        viewModel.getArticle().observe(this, articleDetail -> {
-            predictionLabelTv.setVisibility(View.VISIBLE);
+        viewModel.getArticle().observe(this, this::handleResource);
+    }
 
-            teamsTv.setText(String.format("%s - %s",
-                    articleDetail.getTeam1().trim(),
-                    articleDetail.getTeam2().trim()));
-            timeTv.setText(articleDetail.getTime());
-            tournamentTv.setText(articleDetail.getTournament());
-            placeTv.setText(articleDetail.getPlace());
-            predictionTv.setText(articleDetail.getPrediction());
+    private void handleResource(Resource<ArticleDetail> resource) {
+        if (resource.status == Status.LOADING) {
+            loadingPb.setVisibility(View.VISIBLE);
+        } else {
+            loadingPb.setVisibility(View.GONE);
+            if (resource.status == Status.SUCCESS) {
+                setData(resource.data);
+            } else {
+                showToast(resource.message);
+            }
+        }
+    }
 
-            articlesAdapter.setData(articleDetail.getArticle());
-        });
+    private void setData(ArticleDetail articleDetail) {
+        predictionLabelTv.setVisibility(View.VISIBLE);
+
+        teamsTv.setText(String.format("%s - %s",
+                articleDetail.getTeam1().trim(),
+                articleDetail.getTeam2().trim()));
+        timeTv.setText(articleDetail.getTime());
+        tournamentTv.setText(articleDetail.getTournament());
+        placeTv.setText(articleDetail.getPlace());
+        predictionTv.setText(articleDetail.getPrediction());
+
+        articlesAdapter.setData(articleDetail.getArticle());
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

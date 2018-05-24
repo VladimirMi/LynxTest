@@ -8,8 +8,8 @@ import io.github.vladimirmi.lynxtest.data.net.RestServiceProvider;
  */
 public class ServiceLocator {
 
+    public static final Repository REPOSITORY = new Repository(RestServiceProvider.getService());
+
     private ServiceLocator() {
     }
-
-    public static final Repository REPOSITORY = new Repository(RestServiceProvider.getService());
 }

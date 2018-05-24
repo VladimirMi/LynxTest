@@ -2,6 +2,9 @@
     <string name="app_name">LynxTest</string>
     <string name="details">Подробнее</string>
     <string name="prediction">Прогноз:</string>
+    <string name="server_error">Ошибка сервера</string>
+    <string name="client_error">Ошибка клиента</string>
+    <string name="net_error">Нет сети</string>
 
     <string-array name="tabs">
         <item>football</item>
