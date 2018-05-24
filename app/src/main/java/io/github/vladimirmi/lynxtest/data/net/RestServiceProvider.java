@@ -12,11 +12,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
  */
 public class RestServiceProvider {
 
-    private final static String BASE_URL = "http://mikonatoruri.win/";
-    private final static int CONNECT_TIMEOUT = 5000;
-    private final static int READ_TIMEOUT = 5000;
-    private final static int WRITE_TIMEOUT = 5000;
-
     private RestServiceProvider() {
     }
 
@@ -26,7 +21,7 @@ public class RestServiceProvider {
 
     private static Retrofit createRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Api.BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .client(createClient())
                 .build();
@@ -34,9 +29,9 @@ public class RestServiceProvider {
 
     private static OkHttpClient createClient() {
         return new OkHttpClient.Builder()
-                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
-                .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
-                .writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
+                .connectTimeout(Api.CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
+                .readTimeout(Api.READ_TIMEOUT, TimeUnit.MILLISECONDS)
+                .writeTimeout(Api.WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
                 .build();
     }
 
